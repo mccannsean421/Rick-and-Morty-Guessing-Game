@@ -7,6 +7,9 @@ import {
   Link,
 } from 'react-router-dom';
 
+//assets
+import background from './images/background.png';
+
 //custom components
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
@@ -25,10 +28,12 @@ class App extends Component {
           <Navigation />
 
           {/* MAIN CONTENT */}
-          <Switch>
-            <Route exact path="/" component={IndexPage} />
-            <Route path="/quiz" component={QuizPage} />
-          </Switch>
+          <div className="content-container">
+            <Switch>
+              <Route exact path="/" component={IndexPage} />
+              <Route path="/quiz" component={QuizPage} />
+            </Switch>
+          </div>
           {/* Footer */}
           <Footer />
         </AppWrapper>
@@ -43,6 +48,13 @@ var titleSubColor = '#549750';
 
 const AppWrapper = styled.div`
   text-align: center;
+  .content-container {
+    background-image: url('${background}');
+    min-height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
   h1 {
     color: ${mainTitleColor};
     text-shadow: 2px 2px ${titleSubColor};
