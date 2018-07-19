@@ -23,9 +23,6 @@ class App extends Component {
     return (
       <Router>
         <AppWrapper className="App">
-          
-          {/* GLOBAL NAVIGATION */}
-          <Navigation />
 
           {/* MAIN CONTENT */}
           <div className="content-container">
@@ -51,6 +48,7 @@ const AppWrapper = styled.div`
   .content-container {
     background-image: url('${background}');
     min-height: 100vh;
+    height: auto;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -58,6 +56,8 @@ const AppWrapper = styled.div`
   h1 {
     color: ${mainTitleColor};
     text-shadow: 2px 2px ${titleSubColor};
+    font-size: 60px;
+    transform: skewY(-3deg);
   }
 `;
 

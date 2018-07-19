@@ -30,7 +30,7 @@ class Navigation extends Component {
 var backgroundBlue = '#2f395d';
 
 const NavContainer = styled.nav`
-    background-color:${backgroundBlue};
+    background-color: transparent;
     height: 60px;
     display: grid;
     text-align: left;
