@@ -11,7 +11,6 @@ import {
 import background from './images/background.png';
 
 //custom components
-import Navigation from './components/Navigation';
 import Footer from './components/Footer';
 
 //PAGES

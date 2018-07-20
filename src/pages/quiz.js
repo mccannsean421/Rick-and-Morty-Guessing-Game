@@ -148,6 +148,8 @@ class QuizPage extends Component {
 
 const QuizWrapper = styled.div`
     min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr;
     header {
         height: auto;
         display: grid;

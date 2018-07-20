@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import Overdrive from 'react-overdrive';
 
 import {
-    BrowserRouter as Router,
-    Route,
-    Switch,
     Link,
   } from 'react-router-dom';
 
@@ -34,9 +31,9 @@ const IndexWrapper = styled.div`
     height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr;
+    align-items: start;
     @media(min-width: 767px) {
         
-        grid-template-rows: auto 1fr;
         align-items: center;
     }
 
