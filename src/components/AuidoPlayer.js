@@ -31,7 +31,7 @@ class AudioPlayer extends Component {
                     <source src={theme_song} type="audio/wav"></source>
                 </audio>
                 
-                <button onClick={this.muteAudio}>
+                <button className="audio-btn" onClick={this.muteAudio}>
                     {
                         mute ?
                         <img src={unmuteIcon} alt="mute icon"></img>
@@ -45,7 +45,7 @@ class AudioPlayer extends Component {
 }
 
 const PlayerWrapper =  styled.div`
-    button {
+    .audio-btn {
         background-color: transparent;
         border: none;
         img {

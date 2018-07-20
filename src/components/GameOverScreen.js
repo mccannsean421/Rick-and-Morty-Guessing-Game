@@ -7,9 +7,9 @@ class GameOverScreen extends Component {
     }
     
     componentDidMount() {
-        var {rounds, score} = this.props;
+        var {rounds, score, answers} = this.props;
         var { feedback } = this.state;
-
+        console.log(answers);
         if( score < 10 ) {
             this.setState({
                 feedback: "Why aren't you more ashamed of yourself?"
@@ -28,7 +28,7 @@ class GameOverScreen extends Component {
     }
 
     render() {
-        var {rounds, score} = this.props;
+        var {rounds, score, answers} = this.props;
         var { feedback } = this.state;
         
         return (
@@ -37,6 +37,17 @@ class GameOverScreen extends Component {
                 <p>
                     "{feedback}"
                 </p>
+                <div className="answers">
+                    {
+                        answers.map(answer => (
+                            <div key={answer.id}>
+                                <img className="characterImg" src={answer.image} alt="Character Image"></img>
+                                <span>{answer.name}</span>
+                                <span>{answer.correct}</span>
+                            </div>
+                        ))
+                    }
+                </div>
             </GameOverWrapper>
         );
     }
@@ -49,6 +60,17 @@ const GameOverWrapper = styled.div`
     }
     p {
         font-size: 24px;
+    }
+    .answers {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(auto, 200px));
+        grid-gap: 20px;
+        width: 80%;
+        margin: 0 auto;
+        .characterImg {
+            width: 90%;
+            margin: 0 auto;
+        }
     }
     
 `;

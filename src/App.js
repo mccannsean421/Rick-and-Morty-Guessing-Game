@@ -38,10 +38,6 @@ class App extends Component {
   }
 }
 
-//colors
-var mainTitleColor = '#49adb4';
-var titleSubColor = '#549750';
-
 const AppWrapper = styled.div`
   text-align: center;
   .content-container {
@@ -52,12 +48,16 @@ const AppWrapper = styled.div`
     background-size: cover;
     background-position: center;
   }
-  h1 {
-    color: ${mainTitleColor};
-    text-shadow: 2px 2px ${titleSubColor};
-    font-size: 60px;
-    transform: skewY(-3deg);
-  }
+  button {
+            font-size: 18px;
+            padding: 1em 2em;
+            border: none;
+            background-color: #49adb4;
+            border-radius: 50em;
+            color: #fff;
+            cursor: pointer;
+        }
+
 `;
 
 export default App;

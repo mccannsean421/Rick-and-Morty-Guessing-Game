@@ -3,3 +3,10 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+h1 {
+  color: #49adb4;
+  text-shadow: 2px 2px #549750;
+  font-size: 60px;
+  transform: skewY(-3deg);
+}

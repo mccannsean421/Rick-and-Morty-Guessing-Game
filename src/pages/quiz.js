@@ -23,10 +23,10 @@ class QuizPage extends Component {
 
     async retrieveCharacters() {
         const chars = [
-            Math.ceil(Math.random() * 400),
-            Math.ceil(Math.random() * 400),
-            Math.ceil(Math.random() * 400),
-            Math.ceil(Math.random() * 400)
+            Math.floor(Math.random() * 400) + 1,
+            Math.floor(Math.random() * 400) + 1,
+            Math.floor(Math.random() * 400) + 1,
+            Math.floor(Math.random() * 400) + 1
         ];
 
         var { characters, correctAnswer, possibleAnswers, answerCorrect } = this.state;
@@ -61,6 +61,7 @@ class QuizPage extends Component {
             turnsTaken, 
             gameOver,
             answerCorrect,
+            usedCharacters,
             maxRounds
         } = this.state;
 
@@ -77,10 +78,14 @@ class QuizPage extends Component {
             if(playerGuess == correctAnswer.name) {
                 this.setState({ 
                     playerScore: playerScore + 1,
-                    answerCorrect: true
                 });
-            } 
+                correctAnswer.correct = true;
+            }  else {
+                correctAnswer.correct = false;
+            }
 
+            usedCharacters.push(correctAnswer);
+            
             //Next question
             this.nextQuestion();
         } else {
@@ -94,9 +99,27 @@ class QuizPage extends Component {
     async nextQuestion() {
         this.retrieveCharacters();    
     }
+
+    //Reset game
+    resetGame = () => {
+        this.setState({
+            gameOver: false,
+            playerScore: 0,
+            turnsTaken: 0
+        });
+        this.retrieveCharacters();
+    }
     
     render() {
-        var { characters, correctAnswer, gameOver, playerScore, answerCorrect, maxRounds } = this.state;
+        var { 
+            characters, 
+            correctAnswer, 
+            gameOver, 
+            playerScore, 
+            answerCorrect, 
+            maxRounds,
+            usedCharacters
+        } = this.state;
 
         return (
             <QuizWrapper>     
@@ -117,7 +140,14 @@ class QuizPage extends Component {
                 <div className="game">
                 {
                     gameOver == true ?
-                        <GameOverScreen rounds={maxRounds} score={playerScore} />
+                        <div className="game-over">
+                            <GameOverScreen 
+                                rounds={maxRounds} 
+                                score={playerScore} 
+                                answers={usedCharacters}
+                            />
+                            <button onClick={this.resetGame}>Play Again</button>
+                        </div>
                     :
                     <div>
                         <div>
@@ -183,16 +213,9 @@ const QuizWrapper = styled.div`
         @media(max-width: 767px) {
             grid-template-columns: 1fr;
         }
-        button {
-            font-size: 18px;
-            padding: 1em 2em;
-            border: none;
-            background-color: #49adb4;
-            border-radius: 50em;
-            color: #fff;
-            cursor: pointer;
-        }
+
     }
+
 `;
 
 export default QuizPage;
