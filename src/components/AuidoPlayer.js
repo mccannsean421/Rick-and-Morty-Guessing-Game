@@ -9,7 +9,7 @@ import unmuteIcon from './../images/unmute.svg';
 class AudioPlayer extends Component {
 
     state = {
-        mute: false,
+        mute: true,
     }
 
     muteAudio = () => {
@@ -23,9 +23,14 @@ class AudioPlayer extends Component {
         var { mute } = this.state;
         return (
             <PlayerWrapper>
-                <audio autoPlay loop muted>
+                <audio 
+                    autoPlay="true" 
+                    loop="true" 
+                    muted={ mute }
+                >
                     <source src={theme_song} type="audio/wav"></source>
                 </audio>
+                
                 <button onClick={this.muteAudio}>
                     {
                         mute ?

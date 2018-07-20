@@ -16,7 +16,7 @@ class QuizPage extends Component {
         playerScore: 0,
         turnsTaken: 0,
         gameOver: false,
-        maxRounds: 20,
+        maxRounds: 3,
         answerCorrect: false
     }
 
@@ -62,6 +62,8 @@ class QuizPage extends Component {
             answerCorrect,
             maxRounds
         } = this.state;
+
+        //Input value
         var playerGuess = e.target.value;
 
         //Increment turns taken
@@ -70,9 +72,7 @@ class QuizPage extends Component {
         });
 
         //Check if game is over
-        if (turnsTaken == maxRounds) {
-            this.setState({ gameOver: true });
-        } else {
+        if (turnsTaken < maxRounds) {
             if(playerGuess == correctAnswer.name) {
                 this.setState({ 
                     playerScore: playerScore + 1,
@@ -82,8 +82,12 @@ class QuizPage extends Component {
 
             //Next question
             this.nextQuestion();
+        } else {
+            //End game
+            this.setState({ gameOver: true });
         }
     }
+    
 
     //Next Question
     async nextQuestion() {
@@ -91,7 +95,7 @@ class QuizPage extends Component {
     }
     
     render() {
-        var { characters, correctAnswer, gameOver, playerScore, answerCorrect } = this.state;
+        var { characters, correctAnswer, gameOver, playerScore, answerCorrect, maxRounds } = this.state;
 
         return (
             <QuizWrapper>     
@@ -119,7 +123,7 @@ class QuizPage extends Component {
                     gameOver == true ?
                         <div>
                             <h2>Game finished</h2>
-                            <p>Score: {playerScore} / 5</p>
+                            <p>Score: {playerScore} / {maxRounds}</p>
                         </div>
                     :
                     <div>
