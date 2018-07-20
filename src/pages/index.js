@@ -13,36 +13,52 @@ class IndexPage extends Component {
     render() {
         return (
             <IndexWrapper>
-                <div>
-                    <Overdrive id="bender-to-big-fry">
-                        <h1>Guess The Character</h1>
-                    </Overdrive>
-                    <p>Test our knowledge and see if you can name these obscure characters!</p>
+
+                <Overdrive id="bender-to-big-fry">
+                    <h1>Guess The Character</h1>
+                </Overdrive>
+
+                <div className="content-wrap">
+                    <div>
+                    <p>Test your Rick & Morty knowledge and see if you can name these obscure characters!</p>
                     <Link className="get-schwifty" to="/quiz">Get Schwifty</Link>
+                    </div>
                 </div>
+
             </IndexWrapper>
         )
     }
 }
 
 const IndexWrapper = styled.div`
+    height: 100vh;
     display: grid;
-    height: 100vh;  
-    align-items: center;
-    p {
-        color: #fff;
-        font-size: 24px;
-        margin-bottom: 30px;
+    grid-template-rows: auto 1fr;
+    @media(min-width: 767px) {
+        
+        grid-template-rows: auto 1fr;
+        align-items: center;
     }
-    a {
-        border-radius: 50em;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-size: 24px;
-        background-color: purple;
-        padding: 1em 2em;
-        color: #fff;
+
+    .content-wrap {
+        display: grid;
+        align-content: center;
+        p {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 3em;
+        }
+        a {
+            border-radius: 50em;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 24px;
+            background-color: #49adb4;
+            padding: 1em 2em;
+            color: #fff;
+        }    
     }
+
 
 `;
 

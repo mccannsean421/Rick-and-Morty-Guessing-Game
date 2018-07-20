@@ -15,9 +15,9 @@ class QuizPage extends Component {
         correctAnswer: {},
         usedCharacters: [],
         playerScore: 0,
-        turnsTaken: 0,
+        turnsTaken: 1,
         gameOver: false,
-        maxRounds: 3,
+        maxRounds: 20,
         answerCorrect: false,
     }
 

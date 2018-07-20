@@ -15,8 +15,8 @@ class GameOverScreen extends Component {
         
         return (
             <GameOverWrapper>
-                <h2>Game finished</h2>
-                <p>Score: {score} / {rounds}</p>
+                <h2>Score: {score} / {rounds}</h2>
+                <p></p>
             </GameOverWrapper>
         );
     }

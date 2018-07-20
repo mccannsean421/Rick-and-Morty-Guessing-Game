@@ -37,6 +37,9 @@ const NavContainer = styled.nav`
     grid-template-columns: 1fr 1fr;
     align-items: center;
     padding: 0 1em;
+    @media(max-width: 767px) {
+        grid-template-columns: 2fr 1fr;
+    }
     h1 {
         margin: 0;
         a {
