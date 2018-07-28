@@ -42,7 +42,7 @@ const IndexWrapper = styled.div`
         align-content: center;
         p {
             color: #fff;
-            font-size: 36px;
+            font-size: 24px;
             margin: 3em auto;
         }
         a {
