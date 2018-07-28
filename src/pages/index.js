@@ -42,8 +42,8 @@ const IndexWrapper = styled.div`
         align-content: center;
         p {
             color: #fff;
-            font-size: 24px;
-            margin-bottom: 3em;
+            font-size: 36px;
+            margin: 3em auto;
         }
         a {
             border-radius: 50em;

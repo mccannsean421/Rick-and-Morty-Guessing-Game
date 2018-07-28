@@ -15,10 +15,9 @@ class QuizPage extends Component {
         correctAnswer: {},
         usedCharacters: [],
         playerScore: 0,
-        turnsTaken: 1,
+        turn: 1,
         gameOver: false,
-        maxRounds: 20,
-        answerCorrect: false,
+        maxRounds: 10,
     }
 
     async retrieveCharacters() {
@@ -58,9 +57,8 @@ class QuizPage extends Component {
         var { 
             correctAnswer, 
             playerScore, 
-            turnsTaken, 
+            turn, 
             gameOver,
-            answerCorrect,
             usedCharacters,
             maxRounds
         } = this.state;
@@ -68,14 +66,9 @@ class QuizPage extends Component {
         //Input value
         var playerGuess = e.target.value;
 
-        //Increment turns taken
-        this.setState({
-            turnsTaken: turnsTaken + 1,
-        });
-
         //Check if game is over
-        if (turnsTaken < maxRounds) {
-            if(playerGuess == correctAnswer.name) {
+        if (turn < maxRounds) {
+            if(playerGuess === correctAnswer.name) {
                 this.setState({ 
                     playerScore: playerScore + 1,
                 });
@@ -84,7 +77,7 @@ class QuizPage extends Component {
                 correctAnswer.correct = false;
             }
 
-            usedCharacters.push(correctAnswer);
+            
             
             //Next question
             this.nextQuestion();
@@ -92,12 +85,17 @@ class QuizPage extends Component {
             //End game
             this.setState({ gameOver: true });
         }
+
+        usedCharacters.push(correctAnswer);
+        //Increment turns taken
+        this.setState({
+            turn: turn + 1,
+        });
     }
     
-
     //Next Question
     async nextQuestion() {
-        this.retrieveCharacters();    
+        this.retrieveCharacters();
     }
 
     //Reset game
@@ -105,7 +103,8 @@ class QuizPage extends Component {
         this.setState({
             gameOver: false,
             playerScore: 0,
-            turnsTaken: 0
+            turn: 1,
+            usedCharacters: []
         });
         this.retrieveCharacters();
     }
@@ -116,7 +115,6 @@ class QuizPage extends Component {
             correctAnswer, 
             gameOver, 
             playerScore, 
-            answerCorrect, 
             maxRounds,
             usedCharacters
         } = this.state;
@@ -139,7 +137,7 @@ class QuizPage extends Component {
                 
                 <div className="game">
                 {
-                    gameOver == true ?
+                    gameOver ?
                         <div className="game-over">
                             <GameOverScreen 
                                 rounds={maxRounds} 
@@ -210,12 +208,12 @@ const QuizWrapper = styled.div`
         margin-top: 30px;
         width: 80%;
         margin: 30px auto;
+        font-size: 24px;
         @media(max-width: 767px) {
             grid-template-columns: 1fr;
         }
 
     }
-
 `;
 
 export default QuizPage;
